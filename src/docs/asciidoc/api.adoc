@@ -20,18 +20,12 @@ include::{snippets}/{user}/join_username_uk_fail_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{user}/join_username_uk_fail_test/http-response.adoc[]
 
-===== Curl
-include::{snippets}/{user}/join_username_uk_fail_test/curl-request.adoc[]
-
 === 2. 회원가입
 ===== Request Example
 include::{snippets}/{user}/join_test/http-request.adoc[]
 
 ===== Response Example
 include::{snippets}/{user}/join_test/http-response.adoc[]
-
-===== Curl
-include::{snippets}/{user}/join_test/curl-request.adoc[]
 
 === 3. 로그인
 ===== Request Example
@@ -40,10 +34,6 @@ include::{snippets}/{user}/login_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{user}/login_test/http-response.adoc[]
 
-===== Curl
-include::{snippets}/{user}/login_test/curl-request.adoc[]
-
-
 === 4. 회원정보수정
 ===== Request Example
 include::{snippets}/{user}/update_test/http-request.adoc[]
@@ -51,18 +41,12 @@ include::{snippets}/{user}/update_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{user}/update_test/http-response.adoc[]
 
-===== Curl
-include::{snippets}/{user}/update_test/curl-request.adoc[]
-
 === 4. 회원정보수정
 ===== Request Example
 include::{snippets}/{user}/update_test/http-request.adoc[]
 
 ===== Response Example
 include::{snippets}/{user}/update_test/http-response.adoc[]
-
-===== Curl
-include::{snippets}/{user}/update_test/curl-request.adoc[]
 
 === 5. 유저네임중복확인
 ===== Request Example
@@ -71,10 +55,6 @@ include::{snippets}/{user}/check_username_available_test/http-request.adoc[]
 ===== Response Example
 include::{snippets}/{user}/check_username_available_test/http-response.adoc[]
 
-===== Curl
-include::{snippets}/{user}/check_username_available_test/curl-request.adoc[]
-
-
 == 게시글
 === 1. 게시글등록
 ===== Request Example
@@ -82,6 +62,3 @@ include::{snippets}/{board}/list_test/http-request.adoc[]
 
 ===== Response Example
 include::{snippets}/{board}/list_test/http-response.adoc[]
-
-===== Curl
-include::{snippets}/{board}/list_test/curl-request.adoc[]
