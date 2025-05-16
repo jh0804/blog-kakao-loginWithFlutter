@@ -6,29 +6,27 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import shop.mtcoding.blog.MyRestDoc;
 import shop.mtcoding.blog._core.util.JwtUtil;
 import shop.mtcoding.blog.board.BoardRequest;
 import shop.mtcoding.blog.user.User;
 
 import static org.hamcrest.Matchers.*;
 
+@AutoConfigureRestDocs(uriScheme = "http", uriHost = "localhost", uriPort = 8080)
 @Transactional
-@AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-public class BoardControllerTest {
+public class BoardControllerTest extends MyRestDoc {
 
     @Autowired
     private ObjectMapper om;
-
-    @Autowired
-    private MockMvc mvc;
 
     private String accessToken;
 
@@ -48,15 +46,6 @@ public class BoardControllerTest {
         // 테스트 후 정리할 코드
         System.out.println("tearDown");
     }
-
-    @Test
-    public void good_test() throws Exception {
-        ResultActions actions = mvc.perform(
-                MockMvcRequestBuilders
-                        .get("/")
-        );
-    }
-
 
     @Test
     public void list_test() throws Exception {
@@ -96,6 +85,7 @@ public class BoardControllerTest {
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.isLast").value(false));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.numbers", hasSize(4)));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.keyword").value("제목1"));
+        actions.andDo(MockMvcResultHandlers.print()).andDo(document);
     }
 
     @Test
@@ -129,6 +119,7 @@ public class BoardControllerTest {
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.replies[0].content").value("댓글3"));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.replies[0].username").value("ssar"));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.replies[0].isReplyOwner").value(false));
+        actions.andDo(MockMvcResultHandlers.print()).andDo(document);
     }
 
     @Test
@@ -165,6 +156,7 @@ public class BoardControllerTest {
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.userId").value(1));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.createdAt",
                 matchesPattern("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+")));
+        actions.andDo(MockMvcResultHandlers.print()).andDo(document);
     }
 
     @Test
@@ -193,6 +185,7 @@ public class BoardControllerTest {
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.userId").value(1));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.createdAt",
                 matchesPattern("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+")));
+        actions.andDo(MockMvcResultHandlers.print()).andDo(document);
     }
 
     @Test
@@ -230,5 +223,6 @@ public class BoardControllerTest {
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.userId").value(1));
         actions.andExpect(MockMvcResultMatchers.jsonPath("$.body.createdAt",
                 matchesPattern("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+")));
+        actions.andDo(MockMvcResultHandlers.print()).andDo(document);
     }
 }

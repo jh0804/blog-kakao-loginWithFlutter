@@ -32,9 +32,12 @@ public class AuthorizationFilter implements Filter {
 
             User user = JwtUtil.verify(accessToken);
 
+            System.out.println("----------------------------------------");
             // 토큰을 다시 검증하기 귀찮아서, 임시로 세션에 넣어둔거다.
             HttpSession session = request.getSession();
             session.setAttribute("sessionUser", user);
+            System.out.println("토큰을 받아서 세션에 넣음!!!!!!!!!!!!!!!!!!");
+            System.out.println("----------------------------------------");
 
             chain.doFilter(request, response);
         } catch (TokenExpiredException e1) {
