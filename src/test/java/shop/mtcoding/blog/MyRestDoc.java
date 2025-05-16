@@ -12,7 +12,8 @@ import org.springframework.restdocs.operation.preprocess.Preprocessors;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-@AutoConfigureRestDocs(uriScheme = "http", uriHost = "localhost", uriPort = 8080)
+// 4. 문서만들기
+@AutoConfigureRestDocs(uriScheme = "http", uriHost = "localhost", uriPort = 8080) // build폴더에 adoc파일 생성
 @AutoConfigureMockMvc
 @ExtendWith({SpringExtension.class, RestDocumentationExtension.class})
 public abstract class MyRestDoc {

@@ -19,6 +19,7 @@ import shop.mtcoding.blog.user.User;
 
 import static org.hamcrest.Matchers.*;
 
+// 5. 문서만들기 (상속, mvc 부모에 갔으니 삭제하고, andDo 설정하고)
 @Transactional
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 public class BoardControllerTest extends MyRestDoc {
