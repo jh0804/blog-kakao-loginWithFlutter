@@ -23,7 +23,7 @@ public class IndexController {
 
     @PostMapping("/oauth/login")
     public ResponseEntity<?> login(@RequestBody String idToken) {
-        userService.카카오로그인(idToken);
-        return Resp.ok(idToken);
+        var respDTO = userService.카카오로그인(idToken); // 들어올 때 타입이 결정된다. (매개변수일때는 타입추론이므로 불가능)
+        return Resp.ok(respDTO);
     }
 }

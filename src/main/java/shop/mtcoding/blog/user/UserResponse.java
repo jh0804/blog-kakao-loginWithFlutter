@@ -5,6 +5,21 @@ import lombok.Data;
 
 public class UserResponse {
 
+    // flutter에게 전달
+    @Data
+    public static class IdTokenDTO {
+        private Integer id;
+        private String username;
+        private String idToken;
+        // private String provider; // 일반/카카오 로그인 등 구분  
+
+        public IdTokenDTO(User user, String idToken) {
+            this.id = user.getId();
+            this.username = user.getUsername();
+            this.idToken = idToken;
+        }
+    }
+
     @Data
     public static class TokenDTO {
         private String accessToken;
