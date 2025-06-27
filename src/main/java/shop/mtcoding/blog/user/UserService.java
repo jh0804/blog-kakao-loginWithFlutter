@@ -75,4 +75,17 @@ public class UserService {
         userPS.update(updateDTO.getPassword(), updateDTO.getEmail()); // 영속화된 객체의 상태변경
         return new UserResponse.DTO(userPS); // 리턴한 이유는 세션을 동기화해야해서!!
     } // 더티체킹 -> 상태가 변경되면 update을 날려요!!
+
+    public User 카카오로그인(String idToken) {
+        // 1. 공개키 존재 확인 없으면 다운로드
+        // 2. id Token 검증 (base64 디코딩, 서명검증)
+        OAuthProfile oAuthProfile = MyRSAUtil.verify(idToken);
+
+        // 3. 회원가입 유무 확인
+
+        // 4. 안되있으면 강제 회원가입
+
+        // 5. 되어있다면 아무것도 안해도 됨
+        return null;
+    }
 }
